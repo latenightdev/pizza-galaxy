@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OrderService } from '../services/order.service';
+import { Order } from '../models/order';
 
 @Component({
   selector: 'app-create',
@@ -18,19 +19,18 @@ export class CreateComponent implements OnInit {
       crust: [''],
       flavor: [''],
       size: [''],
-      table: [null]
+      table: [0]
     });
   }
 
   onSubmit(): void {
-    const pizzaObject = {
-      "Crust": this.createForm.get('crust')?.value,
-      "Flavor": this.createForm.get('flavor')?.value,
-      "Size": this.createForm.get('size')?.value,
-      "Table_No": this.createForm.get('table')?.value
-    };
-    console.log(pizzaObject);
-    this.orderService.create(pizzaObject).subscribe(response => {
+    const order = new Order(
+      this.createForm.get('crust')?.value,
+      this.createForm.get('flavor')?.value,
+      this.createForm.get('size')?.value,
+      this.createForm.get('table')?.value
+    );
+    this.orderService.create(order).subscribe(response => {
       console.log(response);
     }, error => {
       console.error(error);

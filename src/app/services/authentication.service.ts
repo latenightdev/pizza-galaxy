@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API } from '../constants/api';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ export class AuthenticationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  authenticate(request: object): Observable<any> {
+  authenticate(user: User): Observable<any> {
     const url = API.auth;
-    return this.httpClient.post(url, request);
+    return this.httpClient.post(url, user);
   }
 
   getToken(): string {

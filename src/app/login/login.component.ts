@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-login',
@@ -21,11 +22,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const loginObject = {
-      "password": this.loginForm.get('password')?.value,
-      "username": this.loginForm.get('username')?.value 
-    };
-    this.authenticationService.authenticate(loginObject).subscribe(response => {
+    const user = new User(this.loginForm.get('password')?.value, this.loginForm.get('username')?.value);
+    this.authenticationService.authenticate(user).subscribe(response => {
       this.authenticationService.setToken(response.access_token);
       this.authenticationService.isAuthenticated = true;
       this.router.navigate(['/home']);
