@@ -6,15 +6,21 @@
                 <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
                     <div class="mt-2">
                         <label for="crust">Crust: </label>
-                        <input id="crust" class="form-control" type="text" formControlName="crust" />
+                        <select id="crust" class="form-control" formControlName="crust">
+                            <option *ngFor="let crust of orderService.crustOptions">{{ crust }}</option>
+                        </select>
                     </div>
                     <div class="mt-2">
                         <label for="flavor">Flavor: </label>
-                        <input id="flavor" class="form-control" type="text" formControlName="flavor" />
+                        <select id="flavor" class="form-control" formControlName="flavor">
+                            <option *ngFor="let flavor of orderService.flavorOptions">{{ flavor }}</option>
+                        </select>
                     </div>
                     <div class="mt-2">
                         <label for="size">Size: </label>
-                        <input id="size" class="form-control" type="text" formControlName="size" />
+                        <select id="size" class="form-control" formControlName="size">
+                            <option *ngFor="let size of orderService.sizeOptions">{{ size }}</option>
+                        </select>
                     </div>
                     <div class="mt-2">
                         <label for="table">Table #: </label>

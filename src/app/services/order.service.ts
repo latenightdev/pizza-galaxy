@@ -9,6 +9,10 @@ import { Order } from '../models/order';
 })
 export class OrderService {
 
+  public crustOptions: String[] = ['Regular', 'Thin', 'Deep Dish'];
+  public flavorOptions: String[] = ['Cheese', 'Pepperoni', 'Supreme', 'Veggie', 'Margherita', 'Hawaiian'];
+  public sizeOptions: String[] = ['Small', 'Medium', 'Large'];
+
   constructor(private httpClient: HttpClient) { }
 
   create(order: Order): Observable<any> {

@@ -12,7 +12,7 @@ export class CreateComponent implements OnInit {
 
   createForm: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder, private orderService: OrderService) { }
+  constructor(private fb: FormBuilder, public orderService: OrderService) { }
 
   ngOnInit(): void {
     this.createForm = this.fb.group({
