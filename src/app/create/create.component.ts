@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from '../services/order.service';
 import { OrderDTO } from '../models/order.dto';
 import { ToastService } from '../services/toast.service';
@@ -18,10 +18,10 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm = this.fb.group({
-      crust: [''],
-      flavor: [''],
-      size: [''],
-      table: [0]
+      crust: ['', Validators.required],
+      flavor: ['', Validators.required],
+      size: ['', Validators.required],
+      table: [null, Validators.required]
     });
   }
 

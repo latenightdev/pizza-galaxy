@@ -1,24 +1,27 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row justify-content-center">
+        <div class="col-4">
             <div class="create-component">
                 <h1 class="text-center">New Order</h1>
                 <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
                     <div class="mt-2">
                         <label for="crust">Crust: </label>
                         <select id="crust" class="form-control" formControlName="crust">
+                            <option [value]="''">- Select Crust -</option>
                             <option *ngFor="let crust of orderService.crustOptions">{{ crust }}</option>
                         </select>
                     </div>
                     <div class="mt-2">
                         <label for="flavor">Flavor: </label>
                         <select id="flavor" class="form-control" formControlName="flavor">
+                            <option [value]="''">- Select Flavor -</option>
                             <option *ngFor="let flavor of orderService.flavorOptions">{{ flavor }}</option>
                         </select>
                     </div>
                     <div class="mt-2">
                         <label for="size">Size: </label>
                         <select id="size" class="form-control" formControlName="size">
+                            <option [value]="''">- Select Size -</option>
                             <option *ngFor="let size of orderService.sizeOptions">{{ size }}</option>
                         </select>
                     </div>
@@ -26,7 +29,7 @@
                         <label for="table">Table #: </label>
                         <input id="table" class="form-control" type="number" formControlName="table" />
                     </div>                           
-                    <button class="btn btn-primary mt-3" type="submit">Submit</button>
+                    <button class="btn btn-primary mt-3" [disabled]="createForm.invalid" type="submit">Submit</button>
                 </form>
             </div>
         </div>
