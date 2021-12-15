@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="create-component">
+                <h1 class="text-center">New Order</h1>
+                <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+                    <div class="mt-2">
+                        <label for="crust">Crust: </label>
+                        <input id="crust" class="form-control" type="text" formControlName="crust" />
+                    </div>
+                    <div class="mt-2">
+                        <label for="flavor">Flavor: </label>
+                        <input id="flavor" class="form-control" type="text" formControlName="flavor" />
+                    </div>
+                    <div class="mt-2">
+                        <label for="size">Size: </label>
+                        <input id="size" class="form-control" type="text" formControlName="size" />
+                    </div>
+                    <div class="mt-2">
+                        <label for="table">Table #: </label>
+                        <input id="table" class="form-control" type="number" formControlName="table" />
+                    </div>                           
+                    <button class="btn btn-primary mt-3" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
       "username": this.loginForm.get('username')?.value 
     };
     this.authenticationService.authenticate(loginObject).subscribe(response => {
-      console.log('Access Token: ' + response.access_token);
+      this.authenticationService.setToken(response.access_token);
+      this.authenticationService.isAuthenticated = true;
       this.router.navigate(['/home']);
     }, error => {
       console.error(error);
