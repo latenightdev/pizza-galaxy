@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OrderService } from '../services/order.service';
 import { OrderDTO } from '../models/order.dto';
+import { ToastService } from '../services/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -12,7 +14,7 @@ export class CreateComponent implements OnInit {
 
   createForm: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder, public orderService: OrderService) { }
+  constructor(private fb: FormBuilder, public orderService: OrderService, private toastService: ToastService, private router: Router) { }
 
   ngOnInit(): void {
     this.createForm = this.fb.group({
@@ -31,7 +33,8 @@ export class CreateComponent implements OnInit {
       this.createForm.get('table')?.value
     );
     this.orderService.create(order).subscribe(response => {
-      console.log(response);
+      this.toastService.success('Create new order success!');
+      this.router.navigate(['/view']);
     }, error => {
       console.error(error);
     });

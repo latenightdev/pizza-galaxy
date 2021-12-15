@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../services/order.service';
 import { Order } from '../models/order';
-import { filter } from 'rxjs';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-view',
@@ -15,7 +15,7 @@ export class ViewComponent implements OnInit {
   public selectedOrder: Order = new Order();
   public searchTerm: string = '';
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.getOrders();
@@ -55,6 +55,7 @@ export class ViewComponent implements OnInit {
 
   onConfirm(): void {
     this.orderService.delete(this.selectedOrder).subscribe(response => {
+      this.toastService.success('Order cancelled successfully!');
       this.getOrders();
     }, error => {
       console.error(error);
