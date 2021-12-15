@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API } from '../constants/api';
+import { OrderDTO } from '../models/order.dto';
 import { Order } from '../models/order';
 
 @Injectable({
@@ -15,9 +16,19 @@ export class OrderService {
 
   constructor(private httpClient: HttpClient) { }
 
-  create(order: Order): Observable<any> {
+  create(order: OrderDTO): Observable<any> {
     const url = API.orders;
     return this.httpClient.post(url, order);
+  }
+
+  readAll(): Observable<Order[]> {
+    const url = API.orders;
+    return this.httpClient.get<Order[]>(url);
+  }
+
+  delete(order: Order): Observable<any> {
+    const url = API.orders + '/' + order.Order_ID;
+    return this.httpClient.delete(url);
   }
 
 }

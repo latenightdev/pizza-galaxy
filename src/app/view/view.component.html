@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="view-component">
+                <h1 class="text-center">View Orders</h1>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="search-box">
+                            <input id="search" type="text" class="form-control" [placeholder]="'Search Orders'" [(ngModel)]="searchTerm" (keyup)="onSearch()" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row order-list">
+                    <div class="col-md-4" *ngFor="let order of filteredOrders | sort: 'Order_ID': true">
+                        <div class="order-view">
+                            <div class="float-end">
+                                <button (click)="onCancel(order)" data-bs-toggle="modal" data-bs-target="#confirm" class="btn btn-danger btn-cancel" type="button">Cancel</button>
+                            </div>
+                            <ul>
+                                <li><span class="fw-bold">Order#:</span> {{ order.Order_ID }}</li>
+                                <li><span class="fw-bold">Table#:</span> {{ order.Table_No }}</li>
+                                <li><span class="fw-bold">Crust:</span> {{ order.Crust }}</li>
+                                <li><span class="fw-bold">Flavor:</span> {{ order.Flavor }}</li>
+                                <li><span class="fw-bold">Size:</span> {{ order.Size }}</li>
+                                <li><span class="fw-bold">Time:</span> {{ order.Timestamp | date: 'short' }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-confirm (confirmCancel)="onConfirm()" [order]="selectedOrder"></app-confirm>

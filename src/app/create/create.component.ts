@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OrderService } from '../services/order.service';
-import { Order } from '../models/order';
+import { OrderDTO } from '../models/order.dto';
 
 @Component({
   selector: 'app-create',
@@ -24,7 +24,7 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const order = new Order(
+    const order = new OrderDTO(
       this.createForm.get('crust')?.value,
       this.createForm.get('flavor')?.value,
       this.createForm.get('size')?.value,
