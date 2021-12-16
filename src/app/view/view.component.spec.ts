@@ -3,6 +3,8 @@ import { ViewComponent } from './view.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { SortPipe } from './sort.pipe';
+import { ConfirmComponent } from '../components/confirm/confirm.component';
+import { FormsModule } from '@angular/forms';
 
 describe('ViewComponent', () => {
   let component: ViewComponent;
@@ -12,9 +14,11 @@ describe('ViewComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         SortPipe,
-        ViewComponent
+        ViewComponent,
+        ConfirmComponent
       ],
       imports: [
+        FormsModule,
         HttpClientTestingModule,
         ToastrModule.forRoot()
       ]

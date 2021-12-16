@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -13,7 +14,8 @@ describe('AppComponent', () => {
         ToastrModule.forRoot()
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        NavigationComponent
       ],
     }).compileComponents();
   });
