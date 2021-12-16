@@ -29,9 +29,9 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 1200

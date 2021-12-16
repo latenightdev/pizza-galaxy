@@ -1,9 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthorizationInterceptor } from './authorization.interceptor';
 
 describe('AuthorizationInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
+    imports: [
+      HttpClientTestingModule
+    ],
     providers: [
       AuthorizationInterceptor
       ]
